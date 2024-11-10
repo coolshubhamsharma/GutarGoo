@@ -1,0 +1,62 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+//The User model defines a table in the database with the following fields
+model User {
+  id String @id @default(cuid()) //id
+  username String @unique //username
+  fullName String //fullname
+  password String //password
+  gender Gender //gender
+  profilePic String
+  createdAt DateTime @default(now()) //this will store thw date&time when the user joined our platform
+  updatedAt DateTime @updatedAt // we can see this as (last seen)
+  conversationsIds String[] //This array stores IDs of conversations the user is involved in
+
+  conversations Conversation[]  //This is a relationship field that links the User model to multiple Conversations records. This implies that each user can participate in multiple conversations.
+  messages Message[] //This is a relationship field that links the User model to multiple Messages record
+}
+
+enum Gender {  //Enums restrict a field to a fixed set of values, improving data consistency.
+  male
+  female
+  other
+}
+
+model Conversation{
+  id String @id @default(cuid()) // Unique ID for each conversation
+  createdAt DateTime @default(now()) // Timestamp when the conversation was created
+  updatedAt DateTime @updatedAt // Automatically updated timestamp when the conversation is modified
+
+  participantsIds String[] // Array of participant IDs in the conversation
+  participants User[] // Relationship linking to the participants in the conversation
+
+  messageIds String[] // Array of message IDs associated with the conversation
+  messages Message[] // Relationship linking to the messages in the conversation
+}
+
+model Message{
+  id String @id @default(cuid())
+
+  conversationId String //so that we know which conversation the message belongs to
+  conversation Conversation @relation(fields:[conversationId],references:[id])  //A foreign key that stores the ID of the conversation to which the message belongs
+
+  senderId String //A foreign key that stores the ID of the user who sent the message, enabling the app to identify the message sender.
+  sender User @relation(fields:[senderId],references:[id])  //A relation field linking each message to a specific User record. This field connects the message to the user who sent it, with senderId acting as the foreign key.
+  
+  body String //The content of the message. This field stores the actual text or data sent by the user.
+  createdAt DateTime @default(now()) //time of the message sent or received
+  updatedAt DateTime @updatedAt
+}
