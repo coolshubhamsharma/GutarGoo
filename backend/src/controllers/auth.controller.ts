@@ -124,7 +124,7 @@ export const logout = async (req:Request,res:Response)=>{
 
 export const getMe = async (req:Request , res:Response)=>{
    try{
-      const user = await prisma.user.findUnique({where : {id:req.user.id}}); //we dont hve the user field in the request that's what the typescript  tells us outof the box 
+      const user = await prisma.user.findUnique({where : {id:req.user.id}}); //we dont have the user field in the request that's what the typescript  tells us outof the box 
       
       if(!user){
          res.status(404).json({error:"user not found"});
