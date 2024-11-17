@@ -1,4 +1,5 @@
 import { createContext, Dispatch, ReactNode, SetStateAction, useContext, useEffect, useState } from "react";
+import toast from "react-hot-toast";
 
 type AuthUserType = { //defines shape of the authenticated users data i.e. its creating a type
     id: string;
@@ -43,7 +44,8 @@ export const AuthContextProvider = ({children}:{children:ReactNode})=>{
                 setAuthUser(data); // we have set the AuthUser = data, that means we can acces the user data at any point of time in the App component if the user is authenticated
             }
             catch(error:any){
-                console.error(error)
+                console.error(error);
+                toast.error(error.message);
             }
             finally{
                 setIsLoading(false);

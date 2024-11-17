@@ -3,6 +3,7 @@ import Login from "./pages/Login/Login"
 import SignUp from "./pages/Signup/SignUp"
 import Home from "./pages/Home/Home"
 import { useAuthContext } from "./context/AuthContext"
+import { Toaster } from "react-hot-toast"
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path='/signup' element={!authUser ? <SignUp/> : <Navigate to={'/'}/>}/>
         <Route path='/login' element={!authUser ? <Login/> : <Navigate to={'/'}/>}/>
       </Routes>
+      <Toaster/> {/*so that we can use toast notifications from the toast package */}
     </div>
   )
 }
