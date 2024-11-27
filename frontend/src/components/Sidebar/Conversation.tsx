@@ -1,12 +1,20 @@
+import useConversation, { ConversationType } from "../../zustand/useConversation"
 
 
 
 
-const Conversation = ({conversation}: {conversation:any}) => {
+const Conversation = ({conversation , emoji}: {conversation: ConversationType,emoji:string}) => {
+
+   const {setSelectedConversation , selectedConversation} = useConversation();
+   const isSelected = selectedConversation?.id === conversation.id;
+
+   const isOnline = false; //manages the offline and online state
+
   return (
+
     <>
-    <div className='flex gap-2 items-center hover:bg-sky-600 rounded p-2 py-1 cursor-ponter'>
-        <div className='avatar online'>
+    <div className={`flex gap-2 items-center hover:bg-sky-600 rounded p-2 py-1 cursor-ponter hover:cursor-pointer ${isSelected ? 'bg-sky-500' : ""}`} onClick={()=> setSelectedConversation(conversation)}>
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
             <div className='w-12 rounded-full '>
                 <img src={conversation.profilePic} alt="user avatara" />
             </div>
@@ -15,7 +23,7 @@ const Conversation = ({conversation}: {conversation:any}) => {
         <div className='flex flex-col flex-1'>
             <div className='flex gap-3 justify-between'>
                 <p className='font-bold text-gray-200'>{conversation.fullName}</p>
-                <span className='text-xl '>{conversation.emoji}</span>
+                <span className='text-xl '>{emoji}</span>
             </div>
         </div>
     </div>

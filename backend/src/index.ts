@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser"
 
 dotenv.config();
 
+const port = process.env.PORT || 8080; 
 const app = express();
 
 app.use(cookieParser()); //for parsing cookies
@@ -16,6 +17,6 @@ app.use("/api/auth",authRoutes);
 app.use("/api/messages",messageRoutes);
 
 
-app.listen(8080 , ()=>{
-    console.log('server is running at 8080')
+app.listen(port , ()=>{
+    console.log("server is running at "+port);
 })

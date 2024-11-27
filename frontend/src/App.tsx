@@ -9,7 +9,7 @@ import { Toaster } from "react-hot-toast"
 function App() {
 
   const {authUser , isLoading} = useAuthContext(); //so that we can use the values inside the authContext
-  console.log(authUser);
+  // console.log(authUser);
 
   if(isLoading){
     return null;

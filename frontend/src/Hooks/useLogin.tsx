@@ -8,13 +8,13 @@ import { useAuthContext } from "../context/AuthContext";
 const useLogin = () => {
 
     const [loading, setLoading] = useState(false);
-    const {setAuthUser} = useAuthContext();
+    const {setAuthUser} = useAuthContext(); //getitng from the authContext
 
     const login = async (username:string,password:string)=>{
         setLoading(true);
 
         try{
-            const res = await fetch("/api/auth/login",{
+            const res = await fetch("/api/auth/login",{ //sending the username and password to the server to check the credentials
                 method:"POST",
                 headers:{"content-type":"application/json"},
                 body: JSON.stringify({username,password}),
