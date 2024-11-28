@@ -45,7 +45,7 @@ General Features:
 
 -   Backend : Express , PostgresSQL , Nodejs , Bcryptjs , Jwt , Socket.io, Prisma
 
--   Hosting Service Provider : render
+-   Hosting Service Provider: render
 
 
 ## Future Possible Enhancements
