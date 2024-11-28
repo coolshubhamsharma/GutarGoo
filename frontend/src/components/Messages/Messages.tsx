@@ -1,4 +1,6 @@
+import useChatScroll from "../../Hooks/useChatScroll";
 import useGetMessages from "../../Hooks/useGetMessages";
+import useListenMessages from "../../Hooks/useListenMessages";
 import MessageSkeleton from "../Skeleteons/MessageSkeleton";
 import Message from "./Message";
 
@@ -7,8 +9,11 @@ const Messages = () => {
     const {loading , messages} = useGetMessages();
 	// console.log(messages.map((message)=>message.id));
 
+	useListenMessages(); //realtime communication
+
+	const ref = useChatScroll(messages) as React.MutableRefObject<HTMLDivElement>;
 	return (
-		<div className='px-4 flex-1 overflow-auto'>
+		<div className='px-4 flex-1 overflow-auto' ref={ref}>
             {loading && messages.map((message) => (
 				<Message key={message.id} message={message} />
 			))}
