@@ -1,6 +1,7 @@
 import jwt, { JwtPayload } from "jsonwebtoken"
 import prisma from "../db/prisma.js";
 
+
 import {Request, Response, NextFunction, RequestHandler} from "express"
 
 interface DecodedToken extends JwtPayload{ // we have added the userId in the token but the typescript dosent know that so we make an interface so that it knows
