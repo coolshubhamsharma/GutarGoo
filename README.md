@@ -18,17 +18,22 @@ This application addresses the need for seamless real-time messaging by offering
 ## Features
 General Features:
 -user Search
+
 <img src="./images/user search.png">
 -signup
+
 <img src="./images/Screenshot 2024-11-28 142059.png">
 -login
+
 <img src="./images/Screenshot 2024-11-28 142129.png">
 -Responsive design
+
 <img src="./images/responsive design.png">
 
 
 #### Services 
 -User online status
+    
 -Real-time comminication
 
 
