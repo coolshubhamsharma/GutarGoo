@@ -5,7 +5,9 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "tsc && npm install && prisma generate --schema=./backend/prisma/schema.prisma && npm install --prefix frontend && npm run build --prefix frontend",
-    "dev": "nodemon"
+    "dev": "nodemon",
+    "postinstall": "npm install --save-dev @types/express @types/jsonwebtoken",
+    "verify-types": "npm list @types/express @types/jsonwebtoken"
   },
   "prisma": {
     "schema": "./backend/prisma/schema.prisma"
