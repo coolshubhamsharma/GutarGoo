@@ -1,6 +1,6 @@
 <h1 align="center"><b> Chat-application </b></h1> 
 
-Link - <a href="https://gutargoo-1.onrender.com"> Link Available Soon</a>
+Link - <a href="https://gutargoo-1.onrender.com"> Link to GutarGoo</a>
 <br>
 <p align="center">
 <img src="./images/Screenshot 2024-11-28 141918.png">
