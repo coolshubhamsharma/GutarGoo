@@ -1,6 +1,6 @@
 {
 	"compilerOptions": {
-		"target": "ESNext", // Specifies what version of ECMAScript the code should be compiled to.
+		"target": "ES2020", // Specifies what version of ECMAScript the code should be compiled to.
 		"module": "NodeNext", // Specifies what module code should be generated.
 		"moduleResolution": "nodenext", // Specifies how TypeScript should resolve module imports.
 		"outDir": "./backend/dist", // Redirect output structure to the directory, save  the bulid files inside the dist directory
@@ -12,6 +12,6 @@
 	"ts-node": {
 		"esm": true
 	},
-	"include": ["backend/src/**/*","node_modules"], // Specifies which files to include when compiling your project.
-	"exclude": [ "**/*.spec.ts", "frontend"], // Specifies which files to exclude when compiling your project.
+	"include": ["backend/src/**/*"], // Specifies which files to include when compiling your project.
+	"exclude": [ "**/*.spec.ts", "frontend","node_modules"], // Specifies which files to exclude when compiling your project.
 }
